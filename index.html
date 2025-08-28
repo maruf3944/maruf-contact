@@ -5,136 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maruf Ahamed | Portfolio</title>
   <style>
-    /* Base */
     :root {
       --brand: #1e4a72;
       --brand-dark: #163a5a;
       --brand-light: #4a9fd1;
-      --bg: #eef1f7;
+      --bg: #eef7fc;
       --text: #1f2937;
       --muted: #6b7280;
       --card: #ffffff;
       --ring: rgba(30,74,114,0.25);
     }
-
     * { box-sizing: border-box; }
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 20% 20%, #f0f6fa, #e1eef8 60%, #d4e8f6);
-      color: var(--text);
-      padding: 24px;
+      display:flex; justify-content:center; align-items:center;
+      height:100vh; margin:0; font-family:"Segoe UI",Arial,sans-serif;
+      background: radial-gradient(1200px 800px at 20% 20%, #f0faff, #d8f0fb 60%, #c0e5f9);
+      color:var(--text); padding:24px;
     }
-
-    /* Card */
     .profile-card {
-      position: relative;
-      text-align: center;
-      background: var(--card);
-      padding: 32px 28px;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(17,24,39,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      max-width: 420px;
-      width: 100%;
-      animation: fadeIn 0.7s ease-in-out;
-      border: 1px solid rgba(17,24,39,0.06);
+      position:relative; text-align:center; background:var(--card);
+      padding:32px 28px; border-radius:20px;
+      box-shadow:0 8px 30px rgba(17,24,39,0.08);
+      transition:transform .3s ease, box-shadow .3s ease;
+      max-width:420px; width:100%;
+      animation:fadeIn .7s ease-in-out;
+      border:1px solid rgba(17,24,39,0.06);
     }
-    .profile-card::after{ /* subtle ring */
-      content: "";
-      position: absolute;
-      inset: -2px;
-      border-radius: 22px;
-      pointer-events: none;
-      box-shadow: 0 0 0 2px var(--ring);
+    .profile-card::after{
+      content:""; position:absolute; inset:-2px; border-radius:22px; pointer-events:none;
+      box-shadow:0 0 0 2px var(--ring);
     }
-    .profile-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(17,24,39,0.12);}
-
-    /* Header */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 8px;
+    .profile-card:hover{ transform:translateY(-6px); box-shadow:0 14px 40px rgba(17,24,39,0.12);}
+    .header{ display:flex; flex-direction:column; align-items:center; gap:8px; margin-bottom:8px;}
+    .logo{ width:120px; object-fit:contain; border-radius:4px; margin-bottom:4px;}
+    .name{ font-size:38px; font-weight:900; margin:6px 0 4px; color:var(--brand); letter-spacing:.3px;}
+    .designation{ font-size:16px; font-weight:600; color:#374151; margin:0 0 10px;}
+    .phone-number{
+      font-size:16px;  /* smaller than before */
+      color:var(--text); margin:24px 0 10px; font-weight:700;
+      background:rgba(30,74,114,0.1); padding:6px 14px; border-radius:8px; display:inline-block;
     }
-    .logo { width: 32px; height: auto; object-fit: contain; border-radius: 4px; display: block; }
-    .name { font-size: 38px; font-weight: 900; margin: 6px 0 4px; color: var(--brand); letter-spacing: 0.3px; }
-    .designation { font-size: 20px; font-weight: 700; color: var(--brand); margin: 0 0 10px; }
-    .phone-number { font-size: 18px; color: var(--text); margin: 0 0 18px; font-weight: 700; background: rgba(30,74,114,0.1); padding: 8px 16px; border-radius: 8px; display: inline-block; }
-
-    /* Photo with neutral background */
-    .photo-wrap{
-      width: 148px; height: 148px; margin: 0 auto 14px; position: relative;
-    }
+    .photo-wrap{ width:148px; height:148px; margin:0 auto 14px; position:relative;}
     .photo-wrap::before{
-      content:""; position:absolute; inset:-8px; border-radius: 999px;
-      background: linear-gradient(145deg,#f0f6fa,#dbe9f5);
-      box-shadow: inset 0 1px 0 #fff, 0 8px 18px rgba(30,74,114,0.15);
+      content:""; position:absolute; inset:-8px; border-radius:999px;
+      background:linear-gradient(145deg,#f0faff,#d6effb);
+      box-shadow:inset 0 1px 0 #fff,0 8px 18px rgba(30,74,114,0.15);
     }
-    .profile-pic {
-      position: relative;
-      width: 148px; height: 148px; border-radius: 50%; object-fit: cover; border: 4px solid #fff;
+    .profile-pic{ position:relative; width:148px; height:148px; border-radius:50%; object-fit:cover; border:4px solid #fff;}
+    .actions{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:14px;}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:11px 16px; border-radius:12px; text-decoration:none;
+      background:var(--brand); color:#fff; font-weight:700; font-size:14px;
+      letter-spacing:.2px; box-shadow:0 6px 16px rgba(30,74,114,0.35);
+      transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
+      min-width:160px; justify-content:center;
     }
-
-    /* Contact buttons */
-    .actions { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top: 14px; }
-    .btn {
-      display: inline-flex; align-items: center; gap:10px;
-      padding: 11px 16px; border-radius: 12px; text-decoration: none;
-      background: var(--brand); color: #fff; font-weight: 700; font-size: 14px;
-      letter-spacing: .2px; box-shadow: 0 6px 16px rgba(30,74,114,0.35);
-      transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
-      min-width: 160px; justify-content: center;
-    }
-    .btn:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(22,58,90,0.35); }
-    .btn:active { transform: translateY(1px); }
-
-    /* Muted info row (optional) */
-    .meta { margin-top: 8px; font-size: 12px; color: var(--muted); }
-
-    /* Icon */
-    .icon { width:18px; height:18px; display:inline-block; }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(14px);} to { opacity:1; transform: translateY(0);} }
-
-    @media (max-width: 420px){ .btn{ min-width: 100%; } }
+    .btn:hover{ background:var(--brand-dark); transform:translateY(-2px); box-shadow:0 10px 22px rgba(22,58,90,0.35);}
+    .btn:active{ transform:translateY(1px);}
+    .btn svg{ width:16px; height:16px; fill:white; }
+    .meta{ margin-top:8px; font-size:12px; color:var(--muted);}
+    @keyframes fadeIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+    @media (max-width:420px){ .btn{ min-width:100%; } }
   </style>
 </head>
 <body>
   <div class="profile-card" role="main" aria-label="Business card for Maruf Ahamed">
     <div class="header">
-      <img class="logo" src="logo.png" alt="Gildan Logo" title="Gildan" />
+      <img class="logo" src="logo.png" alt="Gildan Logo" />
       <h1 class="name">Maruf Ahamed</h1>
     </div>
     <p class="designation">Assistant Storekeeper, Operation</p>
-    <p class="phone-number">Phone: +880 1954-575571</p>
 
     <div class="photo-wrap">
       <img src="profile.png" alt="Profile photo" class="profile-pic" />
     </div>
+    
+    <p class="phone-number">Phone: +880 1954-575571</p>
 
-    <div class="actions" aria-label="Contact actions">
-      <a class="btn" href="tel:+8801954575571" aria-label="Call or WhatsApp">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.57 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.09a2 2 0 0 1 2.11-.45c.76.27 1.55.45 2.36.57A2 2 0 0 1 22 16.92z"/></svg>
-        Call / WhatsApp
+    <div class="actions">
+      <a class="btn" href="tel:+8801954575571">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.11 9.81 19.79 19.79 0 0 1 .05 1.18 2 2 0 0 1 2 0h3a2 2 0 0 1 2 1.72c.13 1.21.5 2.38 1.11 3.43a2 2 0 0 1-.45 2.45L6.1 9.1a16 16 0 0 0 8.8 8.8l1.5-1.5a2 2 0 0 1 2.45-.45c1.05.61 2.22.98 3.43 1.11a2 2 0 0 1 1.72 2z"/></svg>
+        Call
       </a>
-      <a class="btn" href="https://wa.me/8801954575571" target="_blank" rel="noopener" aria-label="Open WhatsApp chat">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.15-.198.297-.767.966-.94 1.164-.173.199-.347.224-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.173.199-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-1.62-.92-2.216-.242-.58-.487-.502-.672-.511l-.573-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.46 0 .1 5.36.1 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.9 11.9 0 0 0 5.86 1.5h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.2-3.5-8.42zm-8.46 18.4h-.01a9.94 9.94 0 0 1-5.07-1.39l-.36-.21-3.68.96.98-3.59-.23-.37a9.96 9.96 0 1 1 8.37 4.6z"/></svg>
-        WhatsApp Chat
-      </a>
-      <a class="btn" href="mailto:marufahamed1999@gmail.com" aria-label="Send email">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
-        Email
-      </a>
-      <a class="btn" href="https://www.linkedin.com/in/maruf-ahamed-16b8462a9" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.05c.53-1 1.82-2.1 3.75-2.1 4 0 4.75 2.6 4.75 6v7.5h-4v-6.6c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V24h-4V8.5z"/></svg>
-        LinkedIn
-      </a>
+      <a class="btn" href="https://wa.me/8801954575571" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a class="btn" href="mailto:marufahamed1999@gmail.com">✉️ Email</a>
+      <a class="btn" href="https://www.linkedin.com/in/maruf-ahamed-16b8462a9" target="_blank" rel="noopener">🔗 LinkedIn</a>
     </div>
 
     <p class="meta">Excellence in Operations • Commitment to Quality • Building Success Together</p>
